@@ -1,0 +1,72 @@
+@use "sass:map";
+
+$theme-light: (
+  --primaryBackground: (hex: #ffffff, alpha: 1.0),
+  --secondaryBackground: (hex: #263238, alpha: 0.1),
+
+  --primaryColor: (hex: #171717, alpha: 1.0),
+  --secondaryColor: (hex: #000000, alpha: 1.0),
+  --primaryBtnColor: (hex: #ffffff, alpha: 1.0),
+
+  --primaryBorder: (hex: #263238, alpha: 0.1),
+  --secondaryBorder: (hex: #43a047, alpha: 1.0),
+
+  --primaryBtnDefault: (hex: #43a047, alpha: 1.0),
+  --primaryBtnHover: (hex: #4caf50, alpha: 1.0),
+  --primaryBtnActive: (hex: #347c37, alpha: 1.0),
+  --secondaryBtnDefault: (hex: #ffffff, alpha: 0.0),
+  --secondaryBtnHover: (hex: #263238, alpha: 0.05),
+  --secondaryBtnActive: (hex: #263238, alpha: 0.1),
+
+  --skeletonBackground: (hex: #e2e5e7, alpha: 1.0),
+  --skeletonGradientTo: (hex: #ffffff, alpha: 0),
+  --skeletonGradientFrom: (hex: #ffffff, alpha: 0.5),
+);
+
+$theme-dark: (
+  --primaryBackground: (hex: #21252b, alpha: 1.0),
+  --secondaryBackground: (hex: #2c3139, alpha: 1.0),
+
+  --primaryColor: (hex: #bdc1c6, alpha: 1.0),
+  --secondaryColor: (hex: #ffffff, alpha: 1.0),
+  --primaryBtnColor: (hex: #ffffff, alpha: 1.0),
+
+  --primaryBorder: (hex: #ffffff, alpha: 0.12),
+  --secondaryBorder: (hex: #40a045, alpha: 1.0),
+
+  --primaryBtnDefault: (hex: #40a045, alpha: 1.0),
+  --primaryBtnHover: (hex: #57bc5c, alpha: 1.0),
+  --primaryBtnActive: (hex: #347c37, alpha: 1.0),
+  --secondaryBtnDefault: (hex: #ffffff, alpha: 0.0),
+  --secondaryBtnHover: (hex: #ffffff, alpha: 0.05),
+  --secondaryBtnActive: (hex: #ffffff, alpha: 0.1),
+
+  --skeletonBackground: (hex: #4f5660, alpha: 1.0),
+  --skeletonGradientTo: (hex: #8d9094, alpha: 0),
+  --skeletonGradientFrom: (hex: #8d9094, alpha: 0.5),
+);
+
+@function color-to-rgba($color, $alpha) {
+  @return rgba($color, $alpha);
+}
+
+@mixin generate-theme-variables($theme-map) {
+  @each $key, $values in $theme-map {
+    #{$key}: #{color-to-rgba(map.get($values, hex), map.get($values, alpha))};
+  }
+}
+
+:root,
+:root[data-theme="light"] {
+  @include generate-theme-variables($theme-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include generate-theme-variables($theme-dark);
+  }
+}
+
+:root[data-theme="dark"] {
+  @include generate-theme-variables($theme-dark);
+}

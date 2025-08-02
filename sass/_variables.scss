@@ -1,0 +1,14 @@
+:root {
+  --paddingContainer: 16px;
+  --widthContainer: 375px;
+
+  @media screen and (min-width: 768px) {
+    --paddingContainer: 48px;
+    --widthContainer: 768px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    --paddingContainer: 80px;
+    --widthContainer: 1440px;
+  }
+}
