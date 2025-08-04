@@ -4,9 +4,9 @@ import supabase from "@/src/lib/supabase";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ): Promise<Response> {
-  const { id } = params;
+  const { id } = await params;
 
   const { data, error } = await supabase
     .from("subsubjects")
