@@ -18,6 +18,8 @@ import readingGoalReducer, {
 
 import {
   getBooksQuery,
+  getContributorRolesQuery,
+  getContributorsQuery,
 } from "@/src/common/api";
 
 const store = configureStore({
@@ -27,11 +29,15 @@ const store = configureStore({
     readingProgress: readingProgressReducer,
     
     [getBooksQuery.reducerPath]: getBooksQuery.reducer,
+    [getContributorRolesQuery.reducerPath]: getContributorRolesQuery.reducer,
+    [getContributorsQuery.reducerPath]: getContributorsQuery.reducer,
   },
   middleware: (
     getDefaultMiddleware
   ) => getDefaultMiddleware().concat(
-    getBooksQuery.middleware
+    getBooksQuery.middleware,
+    getContributorRolesQuery.middleware,
+    getContributorsQuery.middleware,
   ),
 });
 

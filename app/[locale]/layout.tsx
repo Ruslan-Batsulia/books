@@ -14,10 +14,8 @@ type Props = {
 
 export const metadata: Metadata = {
   title: "Books Catalog",
+  icons: "/images/favicon.ico",
   description: "A simple books catalog application.",
-  icons: {
-    icon: "/images/favicon.ico",
-  },
 };
 
 export function generateStaticParams() {
