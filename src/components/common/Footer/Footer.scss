@@ -1,0 +1,83 @@
+.footer {
+  width: 100%;
+  background-color: var(--primaryBackground);
+
+  & .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    position: relative;
+    padding: 10px var(--paddingContainer);
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 343px;
+      left: 50%;
+      transform: translateX(-50%);
+  
+      border-top: 1px solid var(--primaryBorder);
+  
+      @include tablet {
+        width: 672px;
+      }
+  
+      @include desktop {
+        width: 1280px;
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    flex: 0 1 auto;
+  }
+
+  &__logo-img {
+    width: 30px;
+    height: auto;
+
+    @include tablet {
+      width: 40px;
+    }
+  }
+
+  &__logo-title {
+    font-family: var(--font-winky-sans), Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -1px;
+  }
+
+  &__settings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    height: 100%;
+
+    @include tablet {
+      flex-direction: row;
+      margin-left: auto;
+      gap: 25px;
+    }
+  }
+
+  &__language-title,
+  &__theme-title {
+    font-size: 13px;
+    margin-left: 1px;
+  }
+}

@@ -1,20 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import changeThemeReducer, {
-  setChangeTheme,
-} from "./slices/changeThemeSlice";
-
-import readingProgressReducer, {
-  setReadingProgress,
-  incrementReadingProgress,
-  decrementReadingProgress,
-} from "./slices/readingProgress";
-
-import readingGoalReducer, {
-  setReadingGoal,
-  incrementReadingGoal,
-  decrementReadingGoal,
-} from "./slices/readingGoal";
+import {
+  readingGoalReducer,
+  changeThemeReducer,
+  favoriteBooksReducer,
+  readingProgressReducer,
+} from "./slices";
 
 import {
   getBooksQuery,
@@ -27,6 +18,7 @@ const store = configureStore({
     readingGoal: readingGoalReducer,
     changeTheme: changeThemeReducer,
     readingProgress: readingProgressReducer,
+    favoriteBooks: favoriteBooksReducer,
     
     [getBooksQuery.reducerPath]: getBooksQuery.reducer,
     [getContributorRolesQuery.reducerPath]: getContributorRolesQuery.reducer,
@@ -43,13 +35,4 @@ const store = configureStore({
 
 export type StoreType = ReturnType<typeof store.getState>;
 
-export {
-  store,
-  setChangeTheme,
-  setReadingGoal,
-  setReadingProgress,
-  incrementReadingGoal,
-  decrementReadingGoal,
-  incrementReadingProgress,
-  decrementReadingProgress,
-};
+export { store };

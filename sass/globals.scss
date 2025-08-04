@@ -15,12 +15,15 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+
   position: relative;
   overflow-x: hidden;
   
   min-width: 375px;
-  min-height: 110vh;
-  scroll-margin-top: 60px;
+  min-height: 100.1vh;
+  scroll-margin-top: 10vh;
 
   background-color: var(--primaryBackground);
   color: var(--primaryColor);
@@ -31,6 +34,10 @@ body {
   line-height: 1.5;
   letter-spacing: 0.15px;
   font-style: normal;
+}
+
+main {
+  flex: 1;
 }
 
 ol,

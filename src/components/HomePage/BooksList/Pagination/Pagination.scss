@@ -1,0 +1,109 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+
+  @include tablet {
+    justify-content: initial;
+    gap: 5px;
+  }
+
+  @include desktop {
+    margin-left: auto;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 30px;
+
+    padding: 8px 10px;
+    border: 1px solid var(--primaryBorder);
+    border-radius: 4px;
+
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--secondaryColor);
+    line-height: 1;
+    user-select: none;
+
+    background-color: var(--secondaryBtnActive);
+    transition: background-color 150ms linear;
+
+    &:hover {
+      background-color: var(--secondaryBtnHover);
+    }
+
+    &:active {
+      background-color: var(--secondaryBtnActive);
+    }
+
+    &--disabled {
+      color: var(--primaryColor) !important;
+      cursor: default !important;
+      font-weight: 100 !important;
+      
+      background-color: transparent !important;
+
+      &:hover,
+      &:active {
+        background-color: transparent !important;
+      }
+    }
+  }
+
+  &__triplet {
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    color: var(--primaryColor);
+    letter-spacing: 2px;
+    font-weight: 900;
+
+    display: flex;
+    align-items: flex-end;
+    background-color: transparent;
+    padding: 0 4px;
+
+    cursor: default;
+    border: none;
+
+    &:hover,
+    &:active {
+      background-color: transparent !important;
+    }
+  }
+
+  &__active {
+    background-color: var(--primaryBtnDefault);
+    color: var(--primaryBtnColor);
+    cursor: default;
+
+    &:hover,
+    &:active {
+      background-color: var(--primaryBtnDefault) !important;
+    }
+  }
+
+  &__prev,
+  &__next {
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.5;
+
+    padding: 0;
+  }
+
+  &__prev {
+    & .pagination__arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__next {
+    & .pagination__arrow {
+      transform: rotate(-90deg);
+    }
+  }
+}
