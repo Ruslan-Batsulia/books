@@ -102,3 +102,125 @@ export type ContributorResponse = {
   success: boolean;
   data: Contributor;
 };
+
+export type Language = {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string | null;
+};
+
+export type LanguagesResponse = {
+  success: boolean;
+  data: Language[];
+  count: number;
+  limit: number;
+  offset: number;
+};
+
+export type LanguageResponse = {
+  success: boolean;
+  data: Language;
+};
+
+export type Location = {
+  id: string;
+  city: string | null;
+  country: string | null;
+  created_at: string;
+  updated_at: string | null;
+};
+
+export type LocationsResponse = {
+  success: boolean;
+  data: Location[];
+  count: number;
+  limit: number;
+  offset: number;
+};
+
+export type LocationResponse = {
+  success: boolean;
+  data: Location;
+};
+
+export type Publisher = {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string | null;
+};
+
+export type PublishersResponse = {
+  success: boolean;
+  data: Publisher[];
+  count: number;
+  limit: number;
+  offset: number;
+};
+
+export type PublisherResponse = {
+  success: boolean;
+  data: Publisher;
+};
+
+export type Subject = {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string | null;
+};
+
+export type SubjectsResponse = {
+  success: boolean;
+  data: Subject[];
+  count: number;
+  limit: number;
+  offset: number;
+};
+
+export type SubjectResponse = {
+  success: boolean;
+  data: Subject;
+};
+
+export type Subsubject = {
+  id: string;
+  name: string;
+  subjects_id: string | null;
+  created_at: string;
+  updated_at: string | null;
+};
+
+export type SubsubjectsResponse = {
+  success: boolean;
+  data: Subsubject[];
+  count: number;
+  limit: number;
+  offset: number;
+};
+
+export type SubsubjectResponse = {
+  success: boolean;
+  data: Subsubject;
+};
+
+export type Tag = {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string | null;
+};
+
+export type TagsResponse = {
+  success: boolean;
+  data: Tag[];
+  count: number;
+  limit: number;
+  offset: number;
+};
+
+export type TagResponse = {
+  success: boolean;
+  data: Tag;
+};
