@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
+import IconNone from "@/public/images/avatar_book.png";
+
 import "./BookCard.scss";
 
 type BookCardProps = {
@@ -28,7 +30,7 @@ export default function BookCard({
           >
             {(icon) ? (
               <Image
-                src={icon}
+                src={icon === "IconNone" ? IconNone : icon }
                 alt={"Icon Book"}
                 className={"book-card__icon"}
                 fill={true}

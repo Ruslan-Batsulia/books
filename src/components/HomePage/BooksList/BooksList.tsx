@@ -87,7 +87,7 @@ export default function BooksList() {
                   key={book.id}
                   bookId={book.id}
                   title={book.title}
-                  icon={book.cover_url ?? ""}
+                  icon={book.cover_url ?? "IconNone"}
                   author={books.author(book)}
                 />
               )

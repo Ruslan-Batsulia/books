@@ -10,7 +10,8 @@
   &__card-container {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    column-gap: 50px;
+    row-gap: 30px;
     flex-wrap: wrap;
     align-items: stretch;
   
@@ -19,7 +20,7 @@
     }
   
     @include desktop {
-      justify-content: space-between;
+      justify-content: flex-start;
     }
   }
 }

@@ -2,17 +2,20 @@
   position: relative;
   display: flex;
 
-  min-width: 216px;
+  min-width: 100%;
 
   @include desktop {
+    min-width: 216px;
+
     &:hover &__wrapper {
-      position: absolute !important;
+      // position: absolute !important;
 
       transform: scale(1.1);
     }
   }
 
   @include tablet {
+    min-width: 216px;
     width: initial;
   }
 
