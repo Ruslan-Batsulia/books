@@ -1,241 +1,131 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {
-  BooksResponse,
-  BookResponse,
-  ContributorRolesResponse,
-  ContributorRoleResponse,
-  ContributorsResponse,
-  ContributorResponse,
-  LanguagesResponse,
-  LanguageResponse,
-  LocationsResponse,
-  LocationResponse,
-  PublishersResponse,
-  PublisherResponse,
-  SubjectsResponse,
-  SubjectResponse,
-  SubsubjectsResponse,
-  SubsubjectResponse,
-  TagsResponse,
+import type {
   TagResponse,
+  TagsResponse,
+  BookResponse,
+  BooksResponse,
+  SubjectResponse,
+  SubjectsResponse,
+  LanguageResponse,
+  LanguagesResponse,
+  LocationResponse,
+  LocationsResponse,
+  PublisherResponse,
+  PublishersResponse,
+  SubsubjectResponse,
+  SubsubjectsResponse,
+  ContributorResponse,
+  ContributorsResponse,
+  ContributorRoleResponse,
+  ContributorRolesResponse,
 } from "./types";
+import { makeApi, withParams } from "./utils";
 
-const API_URL: string = process.env.NEXT_PUBLIC_API_URL!;
-
-export const getBooksQuery = createApi({
-  reducerPath: "getBooks",
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const getBooksQuery = makeApi("getBooks").injectEndpoints({
   endpoints: (builder) => ({
     getBooks: builder.query<BooksResponse, Record<string, string | number | undefined>>({
-      query: (paramsObject) => {
-        const params = new URLSearchParams();
-
-        Object.entries(paramsObject).forEach(([key, value]) => {
-          if (value !== undefined && value !== "") {
-            params.append(key, value.toString());
-          }
-        });
-
-        return `/books?${params.toString()}`;
-      },
+      query: withParams("/books"),
     }),
     getBook: builder.query<BookResponse, string>({
-      query: (id) => `/books/${id}`,
+      query: (id) => `/books/${id}`
     }),
   }),
-  refetchOnMountOrArgChange: false,
+  overrideExisting: false,
 });
 
-export const getContributorRolesQuery = createApi({
-  reducerPath: "getContributorRoles",
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const getContributorRolesQuery = makeApi("getContributorRoles").injectEndpoints({
   endpoints: (builder) => ({
     getContributorRoles: builder.query<ContributorRolesResponse, Record<string, string | number | undefined>>({
-      query: (paramsObject) => {
-        const params = new URLSearchParams();
-
-        Object.entries(paramsObject).forEach(([key, value]) => {
-          if (value !== undefined && value !== "") {
-            params.append(key, value.toString());
-          }
-        });
-
-        return `/contributor_roles?${params.toString()}`;
-      },
+      query: withParams("/contributor_roles"),
     }),
     getContributorRole: builder.query<ContributorRoleResponse, string>({
-      query: (id) => `/contributor_roles/${id}`,
+      query: (id) => `/contributor_roles/${id}`
     }),
   }),
-  refetchOnMountOrArgChange: false,
+  overrideExisting: false,
 });
 
-export const getContributorsQuery = createApi({
-  reducerPath: "getContributors",
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const getContributorsQuery = makeApi("getContributors").injectEndpoints({
   endpoints: (builder) => ({
     getContributors: builder.query<ContributorsResponse, Record<string, string | number | undefined>>({
-      query: (paramsObject) => {
-        const params = new URLSearchParams();
-
-        Object.entries(paramsObject).forEach(([key, value]) => {
-          if (value !== undefined && value !== "") {
-            params.append(key, value.toString());
-          }
-        });
-
-        return `/contributors?${params.toString()}`;
-      },
+      query: withParams("/contributors"),
     }),
     getContributor: builder.query<ContributorResponse, string>({
-      query: (id) => `/contributors/${id}`,
+      query: (id) => `/contributors/${id}`
     }),
   }),
-  refetchOnMountOrArgChange: false,
+  overrideExisting: false,
 });
 
-export const getLanguagesQuery = createApi({
-  reducerPath: "getLanguages",
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const getLanguagesQuery = makeApi("getLanguages").injectEndpoints({
   endpoints: (builder) => ({
     getLanguages: builder.query<LanguagesResponse, Record<string, string | number | undefined>>({
-      query: (paramsObject) => {
-        const params = new URLSearchParams();
-
-        Object.entries(paramsObject).forEach(([key, value]) => {
-          if (value !== undefined && value !== "") {
-            params.append(key, value.toString());
-          }
-        });
-
-        return `/languages?${params.toString()}`;
-      },
+      query: withParams("/languages"),
     }),
     getLanguage: builder.query<LanguageResponse, string>({
-      query: (id) => `/languages/${id}`,
+      query: (id) => `/languages/${id}`
     }),
   }),
-  refetchOnMountOrArgChange: false,
+  overrideExisting: false,
 });
 
-export const getLocationsQuery = createApi({
-  reducerPath: "getLocations",
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const getLocationsQuery = makeApi("getLocations").injectEndpoints({
   endpoints: (builder) => ({
     getLocations: builder.query<LocationsResponse, Record<string, string | number | undefined>>({
-      query: (paramsObject) => {
-        const params = new URLSearchParams();
-
-        Object.entries(paramsObject).forEach(([key, value]) => {
-          if (value !== undefined && value !== "") {
-            params.append(key, value.toString());
-          }
-        });
-
-        return `/locations?${params.toString()}`;
-      },
+      query: withParams("/locations"),
     }),
     getLocation: builder.query<LocationResponse, string>({
-      query: (id) => `/locations/${id}`,
+      query: (id) => `/locations/${id}`
     }),
   }),
-  refetchOnMountOrArgChange: false,
+  overrideExisting: false,
 });
 
-export const getPublishersQuery = createApi({
-  reducerPath: "getPublishers",
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const getPublishersQuery = makeApi("getPublishers").injectEndpoints({
   endpoints: (builder) => ({
     getPublishers: builder.query<PublishersResponse, Record<string, string | number | undefined>>({
-      query: (paramsObject) => {
-        const params = new URLSearchParams();
-
-        Object.entries(paramsObject).forEach(([key, value]) => {
-          if (value !== undefined && value !== "") {
-            params.append(key, value.toString());
-          }
-        });
-
-        return `/publishers?${params.toString()}`;
-      },
+      query: withParams("/publishers"),
     }),
     getPublisher: builder.query<PublisherResponse, string>({
-      query: (id) => `/publishers/${id}`,
+      query: (id) => `/publishers/${id}`
     }),
   }),
-  refetchOnMountOrArgChange: false,
+  overrideExisting: false,
 });
 
-export const getSubjectsQuery = createApi({
-  reducerPath: "getSubjects",
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const getSubjectsQuery = makeApi("getSubjects").injectEndpoints({
   endpoints: (builder) => ({
     getSubjects: builder.query<SubjectsResponse, Record<string, string | number | undefined>>({
-      query: (paramsObject) => {
-        const params = new URLSearchParams();
-
-        Object.entries(paramsObject).forEach(([key, value]) => {
-          if (value !== undefined && value !== "") {
-            params.append(key, value.toString());
-          }
-        });
-
-        return `/subjects?${params.toString()}`;
-      },
+      query: withParams("/subjects"),
     }),
     getSubject: builder.query<SubjectResponse, string>({
-      query: (id) => `/subjects/${id}`,
+      query: (id) => `/subjects/${id}`
     }),
   }),
-  refetchOnMountOrArgChange: false,
+  overrideExisting: false,
 });
 
-export const getSubsubjectsQuery = createApi({
-  reducerPath: "getSubsubjects",
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const getSubsubjectsQuery = makeApi("getSubsubjects").injectEndpoints({
   endpoints: (builder) => ({
     getSubsubjects: builder.query<SubsubjectsResponse, Record<string, string | number | undefined>>({
-      query: (paramsObject) => {
-        const params = new URLSearchParams();
-
-        Object.entries(paramsObject).forEach(([key, value]) => {
-          if (value !== undefined && value !== "") {
-            params.append(key, value.toString());
-          }
-        });
-
-        return `/subsubjects?${params.toString()}`;
-      },
+      query: withParams("/subsubjects"),
     }),
     getSubsubject: builder.query<SubsubjectResponse, string>({
-      query: (id) => `/subsubjects/${id}`,
+      query: (id) => `/subsubjects/${id}`
     }),
   }),
-  refetchOnMountOrArgChange: false,
+  overrideExisting: false,
 });
 
-export const getTagsQuery = createApi({
-  reducerPath: "getTags",
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+export const getTagsQuery = makeApi("getTags").injectEndpoints({
   endpoints: (builder) => ({
     getTags: builder.query<TagsResponse, Record<string, string | number | undefined>>({
-      query: (paramsObject) => {
-        const params = new URLSearchParams();
-
-        Object.entries(paramsObject).forEach(([key, value]) => {
-          if (value !== undefined && value !== "") {
-            params.append(key, value.toString());
-          }
-        });
-
-        return `/tags?${params.toString()}`;
-      },
+      query: withParams("/tags"),
     }),
     getTag: builder.query<TagResponse, string>({
-      query: (id) => `/tags/${id}`,
+      query: (id) => `/tags/${id}`
     }),
   }),
-  refetchOnMountOrArgChange: false,
+  overrideExisting: false,
 });
 
 export const {
