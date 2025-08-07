@@ -1,0 +1,9 @@
+export { tagsApi } from "./api/tagsApi";
+export { booksApi } from "./api/booksApi";
+export { subjectsApi } from "./api/subjectsApi";
+export { languagesApi } from "./api/languagesApi";
+export { locationsApi } from "./api/locationsApi";
+export { publishersApi } from "./api/publishersApi";
+export { subsubjectsApi } from "./api/subsubjectsApi";
+export { contributorsApi } from "./api/contributorsApi";
+export { contributorRolesApi } from "./api/contributorRolesApi";

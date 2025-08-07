@@ -5,7 +5,7 @@ import type {
   Params,
   BookResponse,
   BooksResponse,
-} from "../types";
+} from "../../types";
 
 export const booksApi = createApi({
   reducerPath: "booksApi",

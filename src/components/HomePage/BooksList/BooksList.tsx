@@ -5,7 +5,7 @@ import {
   // useAddBookMutation,
   // useDeleteBookMutation,
   // useUpdateBookMutation
-} from "@/src/common/services/booksApi";
+} from "@/src/common/services/api/booksApi";
 import { useLocale } from "next-intl";
 import { Book } from "@/src/common/types";
 import BookCard from "./BookCard/BookCard";

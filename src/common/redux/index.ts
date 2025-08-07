@@ -9,20 +9,16 @@ import {
   readingProgressReducer,
 } from "./slices";
 import {
-  getTagsQuery,
-  getBooksQuery,
-  getSubjectsQuery,
-  getLanguagesQuery,
-  getLocationsQuery,
-  getPublishersQuery,
-  getSubsubjectsQuery,
-  getContributorsQuery,
-  getContributorRolesQuery,
-} from "@/src/common/api";
-
-import {
+  tagsApi,
   booksApi,
-} from "@/src/common/services/booksApi";
+  subjectsApi,
+  languagesApi,
+  locationsApi,
+  publishersApi,
+  subsubjectsApi,
+  contributorsApi,
+  contributorRolesApi,
+} from "../services";
 
 const rootReducer = combineReducers({
   readingGoal: readingGoalReducer,
@@ -30,16 +26,15 @@ const rootReducer = combineReducers({
   favoriteBooks: favoriteBooksReducer,
   readingProgress: readingProgressReducer,
 
+  [tagsApi.reducerPath]: tagsApi.reducer,
   [booksApi.reducerPath]: booksApi.reducer,
-  [getTagsQuery.reducerPath]: getTagsQuery.reducer,
-  [getBooksQuery.reducerPath]: getBooksQuery.reducer,
-  [getSubjectsQuery.reducerPath]: getSubjectsQuery.reducer,
-  [getLanguagesQuery.reducerPath]: getLanguagesQuery.reducer,
-  [getLocationsQuery.reducerPath]: getLocationsQuery.reducer,
-  [getPublishersQuery.reducerPath]: getPublishersQuery.reducer,
-  [getSubsubjectsQuery.reducerPath]: getSubsubjectsQuery.reducer,
-  [getContributorsQuery.reducerPath]: getContributorsQuery.reducer,
-  [getContributorRolesQuery.reducerPath]: getContributorRolesQuery.reducer,
+  [subjectsApi.reducerPath]: subjectsApi.reducer,
+  [languagesApi.reducerPath]: languagesApi.reducer,
+  [locationsApi.reducerPath]: locationsApi.reducer,
+  [publishersApi.reducerPath]: publishersApi.reducer,
+  [subsubjectsApi.reducerPath]: subsubjectsApi.reducer,
+  [contributorsApi.reducerPath]: contributorsApi.reducer,
+  [contributorRolesApi.reducerPath]: contributorRolesApi.reducer,
 });
 
 export const store = configureStore({
@@ -47,15 +42,14 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       booksApi.middleware,
-      getTagsQuery.middleware,
-      getBooksQuery.middleware,
-      getSubjectsQuery.middleware,
-      getLanguagesQuery.middleware,
-      getLocationsQuery.middleware,
-      getPublishersQuery.middleware,
-      getSubsubjectsQuery.middleware,
-      getContributorsQuery.middleware,
-      getContributorRolesQuery.middleware
+      tagsApi.middleware,
+      subjectsApi.middleware,
+      languagesApi.middleware,
+      locationsApi.middleware,
+      publishersApi.middleware,
+      subsubjectsApi.middleware,
+      contributorsApi.middleware,
+      contributorRolesApi.middleware
     ),
 });
 
