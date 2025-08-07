@@ -20,12 +20,17 @@ import {
   getContributorRolesQuery,
 } from "@/src/common/api";
 
+import {
+  booksApi,
+} from "@/src/common/services/booksApi";
+
 const rootReducer = combineReducers({
   readingGoal: readingGoalReducer,
   changeTheme: changeThemeReducer,
   favoriteBooks: favoriteBooksReducer,
   readingProgress: readingProgressReducer,
 
+  [booksApi.reducerPath]: booksApi.reducer,
   [getTagsQuery.reducerPath]: getTagsQuery.reducer,
   [getBooksQuery.reducerPath]: getBooksQuery.reducer,
   [getSubjectsQuery.reducerPath]: getSubjectsQuery.reducer,
@@ -41,6 +46,7 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
+      booksApi.middleware,
       getTagsQuery.middleware,
       getBooksQuery.middleware,
       getSubjectsQuery.middleware,

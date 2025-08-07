@@ -1,13 +1,18 @@
 "use client";
 
+import {
+  useGetBooksQuery,
+  // useAddBookMutation,
+  // useDeleteBookMutation,
+  // useUpdateBookMutation
+} from "@/src/common/services/booksApi";
 import { useLocale } from "next-intl";
 import { Book } from "@/src/common/types";
 import BookCard from "./BookCard/BookCard";
+import React, { useMemo, useState } from "react";
 import Pagination from "./Pagination/Pagination";
 import { useSearchParams } from "next/navigation";
-import { useGetBooksQuery } from "@/src/common/api";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import React, { useEffect, useMemo, useState } from "react";
 import BooksListSkeleton from "./BooksListSkeleton/BooksListSkeleton";
 
 import "./BooksList.scss";
@@ -29,7 +34,54 @@ export default function BooksList() {
     offset: currentPage - 1,
   };
   
-  const { data, isLoading, isFetching, /*isError*/ } = useGetBooksQuery(queryParams);
+  const { data, isLoading, isFetching, /*isError*/ } = useGetBooksQuery(queryParams); //useGetBooksQuery(queryParams);
+  // const [addBook] = useAddBookMutation();
+  // const [updateBook] = useUpdateBookMutation();
+  // const [deleteBook] = useDeleteBookMutation();
+
+  // const handleAddBook = async () => {
+  //   try {
+  //     const newBook = {
+  //       title: "New Test Book",
+  //       description: "Book's description",
+  //       cover_url: null,
+  //     };
+
+  //     const result = await addBook(newBook).unwrap();
+  //     console.log("Додано книгу:", result);
+  //   } catch (err: unknown) {
+  //     console.error("Помилка при додаванні:", err);
+  //   };
+  // };
+
+  // const handelUpdateBook = async () => {
+  //   try {
+  //     const payload = {
+  //       id: "a925e353-f1f2-4012-b559-d2a37d87c601",
+  //       data: {
+  //         title: "Update Test Book",
+  //         description: "Book's description",
+  //         cover_url: null,
+  //       },
+  //     };
+
+  //     const updated = await updateBook(payload).unwrap();
+  //     console.log("Редаговано книгу:", updated);
+  //   } catch (err: unknown) {
+  //     console.error("Помилка при редагуванні:", err);
+  //   };
+  // };
+
+  // const handleDeleteBook = async () => {
+  //   try {
+  //     const bookId = "a925e353-f1f2-4012-b559-d2a37d87c601";
+  //     const result = await deleteBook(bookId).unwrap();
+  //     console.log("Видалено книгу:", result);
+  //   } catch (err: unknown) {
+  //     console.error("Помилка при видаленні:", err);
+  //   };
+  // };
+
   const booksResults: Book[] = data?.data || [];
   const booksCount: number = data?.count || 10;
   
@@ -99,6 +151,15 @@ export default function BooksList() {
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
+        {/* <button onClick={handleAddBook}>
+          Додати тестову книгу
+        </button>
+        <button onClick={handelUpdateBook}>
+          Редагувати тестову книгу
+        </button>
+        <button onClick={handleDeleteBook}>
+          Видалити тестову книгу
+        </button> */}
       </section>
     </>
   );
