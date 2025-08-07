@@ -1,5 +1,3 @@
-export type Params = Record<string, string | number | undefined>;
-
 type BaseEntity = {
   id: string;
   name: string;
