@@ -1,16 +1,18 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import { useGetSubjectsQuery } from "@/src/common/services/api/subjectsApi";
 import DropdownSelect from "@/src/components/common/Dropdown/Dropdown";
 
 import type { Subject } from "@/src/common/types";
-import ThemeIcon from "@/public/images/dropdown/theme/theme.svg";
+
+import changeLanguageIcon from "@/public/images/dropdown/language/ChangeLanguage.svg";
 
 import "./AddBook.scss";
 
 type Option = {
-  label: string;
   value: string;
+  label: string;
 };
 
 export default function AddBook() {
@@ -21,25 +23,49 @@ export default function AddBook() {
   } = useGetSubjectsQuery({ limit: 20, offset: 0 });
 
   const subjectsResults: Subject[] = subjectsData?.data || [];
-  const subjectsOptions: Option[] = subjectsResults.map((subject) => ({
-    value: subject.id,
-    label: subject.name,
-  }));
+  const subjectsOptions: Option[] = useMemo(
+    () =>
+      subjectsResults.map((subject) => ({
+        value: subject.id,
+        label: subject.name,
+      })),
+    [subjectsResults]
+  );
+  const [subjectsCurrentValue, setSubjectsCurrentValue] = useState<Option>({ value: "", label: "" });
+
+  useEffect(() => {
+    if (subjectsIsLoading || subjectsIsFetching) {
+      setSubjectsCurrentValue({ value: "", label: "" });
+    }
+  }, [subjectsIsLoading, subjectsIsFetching]);
+
+  useEffect(() => {
+    if (!subjectsIsLoading && !subjectsIsFetching && subjectsOptions.length > 0) {
+      setSubjectsCurrentValue(subjectsOptions[0]);
+    }
+  }, [subjectsOptions, subjectsIsLoading, subjectsIsFetching]);
+
+  const changeSubjects = (value: string) => {
+    const found = subjectsOptions.find((item) => item.value === value);
+    if (found) setSubjectsCurrentValue(found);
+  };
 
   return (
-    <section className={"add-book"}>
-      {
-        (subjectsIsLoading || subjectsIsFetching) ? (
-          <div>{"Завантаження"}</div>
-        ) : (
-          <DropdownSelect
-            options={subjectsOptions}
-            currentValue={subjectsOptions[0].value}
-            onChange={() => {}}
-            icon={ThemeIcon}
-          />
-        )
-      }
-    </section>
+    <main className={"add-book"}>
+      <div className="container">
+        {
+          (subjectsIsLoading || subjectsIsFetching) ? (
+            <div>{"Завантаження"}</div>
+          ) : (
+            <DropdownSelect
+              options={subjectsOptions}
+              currentValue={subjectsCurrentValue.value}
+              onChange={changeSubjects}
+              icon={changeLanguageIcon}
+            />
+          )
+        }
+      </div>
+    </main>
   );
 };

@@ -1,8 +1,13 @@
 .add-book {
-  display: flex;
-  height: 500px;
+  & .container {
+    padding: 10px var(--paddingContainer);
 
-  & .dropdown {
-    margin-top: auto;
+    @include tablet {
+      padding: 20px var(--paddingContainer);
+    }
+
+    @include desktop {
+      padding: 30px var(--paddingContainer);
+    }
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import arrowDark from "@/public/images/dropdown/theme/ArrowDark.svg";
 
@@ -26,7 +26,9 @@ export default function Dropdown<T>({
   icon,
 }: DropdownProps<T>) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [openUp, setOpenUp] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
   const handleSelect = (option: Option<T>) => {
     if (option.value !== currentValue) {
@@ -36,17 +38,32 @@ export default function Dropdown<T>({
   };
 
   useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-          setIsOpen(false);
-        }
-      };
-  
-      document.addEventListener("click", handleClickOutside);
-      return () => {
-        document.removeEventListener("click", handleClickOutside);
-      };
-    }, []);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!isOpen || !dropdownRef.current || !listRef.current) return;
+
+    const toggleRect = dropdownRef.current.getBoundingClientRect();
+    const listHeight = listRef.current.offsetHeight;
+    const spaceBelow = window.innerHeight - toggleRect.bottom;
+    const spaceAbove = toggleRect.top;
+
+    if (spaceBelow < listHeight && spaceAbove > listHeight) {
+      setOpenUp(true);
+    } else {
+      setOpenUp(false);
+    }
+  }, [isOpen, options.length]);
 
   const currentLabel = options.find(
     (item) => item.value === currentValue
@@ -78,7 +95,15 @@ export default function Dropdown<T>({
       </div>
 
       {(isOpen) && (
-        <ul className={"dropdown__option-list"}>
+        <ul
+          ref={listRef}
+          className={"dropdown__option-list"}
+          style={
+            openUp
+              ? { top: "auto", bottom: "calc(100% + 4px)" }
+              : { top: "calc(100% + 4px)", bottom: "auto" }
+          }
+        >
           {options.map((item) => (
             <li
               key={String(item.value)}

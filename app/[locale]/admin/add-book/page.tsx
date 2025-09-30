@@ -2,7 +2,7 @@
 
 import { Provider } from "react-redux";
 import { store } from "@/src/common/redux";
-import { AdminPage, Footer, Header } from "@/src/components";
+import { AddBook, Footer, Header } from "@/src/components";
 import { useHasMounted } from "@/src/common/hooks/useHasMounted";
 import { notFound } from "next/navigation";
 
@@ -15,7 +15,7 @@ export default function Admin() {
   return (
     <Provider store={store}>
       <Header />
-      <AdminPage />
+      <AddBook />
       <Footer />
     </Provider>
   );

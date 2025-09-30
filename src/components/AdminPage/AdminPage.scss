@@ -1,6 +1,16 @@
 .admin-page {
+  height: 100%;
+  display: flex;
+
   & .container {
     padding: 10px var(--paddingContainer);
+    min-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
 
     @include tablet {
       padding: 20px var(--paddingContainer);
@@ -8,6 +18,51 @@
 
     @include desktop {
       padding: 30px var(--paddingContainer);
+    }
+  }
+
+  &__link-container {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    flex: 0 0 auto;
+
+    @include onlyTablet {
+      width: 50%;
+    }
+
+    @include desktop {
+      width: fit-content;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background-color: var(--primaryBtnDefault);
+    color: var(--primaryBtnColor);
+    
+    padding: 4px 16px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+
+    @include desktop {
+      transition: background-color 150ms linear;
+  
+      &:hover {
+        background-color: var(--primaryBtnHover);
+      }
+    }
+
+    &:active {
+      background-color: var(--primaryBtnActive);
     }
   }
 }
