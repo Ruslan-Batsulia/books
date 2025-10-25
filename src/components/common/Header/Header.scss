@@ -1,0 +1,283 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  background-color: var(--primaryBackground);
+
+  & .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    position: relative;
+    padding: 10px var(--paddingContainer);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 343px;
+      left: 50%;
+      transform: translateX(-50%);
+  
+      border-bottom: 1px solid var(--primaryBorder);
+  
+      @include tablet {
+        width: 672px;
+      }
+  
+      @include desktop {
+        width: 1280px;
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    flex: 0 0 auto;
+    color: inherit;
+  }
+
+  &__logo-img {
+    width: 30px;
+    height: auto;
+
+    @include tablet {
+      width: 40px;
+    }
+  }
+
+  &__logo-title {
+    font-family: var(--font-oswald), Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -1px;
+
+    color: var(--primaryColor);
+  }
+  
+  &__menu-container {
+    flex: 1 0 auto;
+    width: 100%;
+    height: calc(100vh - 100%);
+    max-height: calc(100vh - 100%);
+
+    transition: max-height 250ms ease-in-out;
+    
+    position: absolute;
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+    
+    background-color: var(--primaryBackground);
+    
+    @include desktop {
+      position: static;
+      
+      width: fit-content;
+      height: initial;
+      max-height: initial;
+    }
+
+    &--close {
+      max-height: 0;
+  
+      @include desktop {
+        max-height: initial;
+      }
+    }
+  }
+
+  &__burger-menu {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    height: 100%;
+    width: fit-content;
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__burger-menu-btn {
+    padding: 4px;
+    border: none;
+    border-radius: 5px;
+
+    background-color: var(--secondaryBtnDefault);
+
+    &:active {
+      background-color: var(--secondaryBtnActive);
+    }
+  }
+
+  &__burger-menu-icon {
+    width: 32px;
+    height: auto;
+  }
+  
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+    
+    width: 100%;
+    height: fit-content;
+    padding: 10px var(--paddingContainer);
+    
+    @include desktop {
+      flex-direction: row;
+      align-items: center;
+      padding: 0;
+    }
+  }
+  
+  &__catalog {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    flex: 0 0 auto;
+
+    @include onlyTablet {
+      width: 50%;
+    }
+
+    @include desktop {
+      width: fit-content;
+    }
+  }
+
+  &__catalog-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background-color: var(--primaryBtnDefault);
+    color: var(--primaryBtnColor);
+    
+    padding: 4px 16px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+
+    @include desktop {
+      transition: background-color 150ms linear;
+  
+      &:hover {
+        background-color: var(--primaryBtnHover);
+      }
+    }
+
+    &:active {
+      background-color: var(--primaryBtnActive);
+    }
+  }
+
+  &__catalog-icon {
+    width: 16px;
+    height: auto;
+  }
+
+  &__interactive {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+
+    width: 100%;
+    height: 100%;
+
+    @include onlyTablet {
+      width: 50%;
+    }
+
+    @include desktop {
+      justify-content: initial;
+      width: fit-content;
+    }
+  }
+  
+  &__favorite {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+
+    flex: 0 0 auto;
+  }
+
+  &__favorite-btn {
+    padding: 4px;
+    border: none;
+    border-radius: 5px;
+
+    background-color: var(--secondaryBtnDefault);
+
+    @include desktop {
+      transition: background-color 150ms linear;
+  
+      &:hover {
+        background-color: var(--secondaryBtnHover);
+      }
+    }
+
+    &:active {
+      background-color: var(--secondaryBtnActive);
+    }
+  }
+
+  &__favorite-icon {
+    width: 32px;
+    height: auto;
+  }
+
+  &__reading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+
+    flex: 0 0 auto;
+  }
+
+  &__reading-btn {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+
+    background-color: var(--secondaryBtnDefault);
+
+    @include desktop {
+      transition: background-color 150ms linear;
+  
+      &:hover {
+        background-color: var(--secondaryBtnHover);
+      }
+    }
+
+    &:active {
+      background-color: var(--secondaryBtnActive);
+    }
+  }
+
+  &__reading-icon {
+    width: auto;
+    height: 30px;
+  }
+}
