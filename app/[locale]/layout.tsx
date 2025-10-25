@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import { Oswald } from "@/src/common/fonts";
 import { setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { Nunito } from "@/src/common/fonts";
 
 import "@/sass/globals.scss";
 
@@ -32,12 +32,16 @@ export default async function LocaleLayout({children, params}: Props) {
   setRequestLocale(locale);
 
   return (
-    <html lang={locale}>
-      <body className={`${Nunito.variable}`}>
+    <html
+      lang={locale}
+      data-lt-installed={"true"}
+      suppressHydrationWarning={true}
+    >
+      <body className={`${Oswald.variable}`}>
         <NextIntlClientProvider>
           {children}
         </NextIntlClientProvider>
       </body>
     </html>
   );
-};
+}

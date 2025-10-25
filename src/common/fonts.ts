@@ -1,10 +1,10 @@
 import localFont from "next/font/local";
 
-export const Nunito = localFont({
+export const Oswald = localFont({
   src: [{
-    path: "./../../public/fonts/Nunito-Regular.woff",
+    path: "./../../public/fonts/Oswald-Regular.woff",
     weight: "100 900",
   }],
-  variable: "--font-nunito",
+  variable: "--font-oswald",
   display: "swap",
 });
