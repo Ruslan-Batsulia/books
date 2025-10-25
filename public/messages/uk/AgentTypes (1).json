@@ -1,0 +1,16 @@
+{
+  "AgentTypes": {
+    "Author": "Автор",
+    "Translator": "Перекладач",
+    "Photographer": "Фотограф",
+    "Other": "Інше",
+    "Illustrator": "Ілюстратор",
+    "Editor": "Редактор",
+    "Contributor": "Співавтор",
+    "Composer": "Композитор",
+    "Compiler": "Укладач",
+    "Commentator": "Коментатор",
+    "Annotator": "Анотатор",
+    "null": "Невідомо"
+  }
+}

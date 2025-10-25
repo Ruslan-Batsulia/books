@@ -1,0 +1,9 @@
+{
+  "Dropdown": {
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  }
+}
