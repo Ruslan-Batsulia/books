@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.2",
+    "@supabase/supabase-js": "^2.76.1",
     "next": "16.0.0",
     "next-intl": "^4.4.0",
     "react": "19.2.0",

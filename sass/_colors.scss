@@ -1,15 +1,15 @@
 @use "sass:map";
 
 $theme-light: (
-  --primaryBackground: (hex: #ffffff, alpha: 1.0),
+  --primaryBackgroundColor: (hex: #ffffff, alpha: 1.0),
 
-  --primaryColor: (hex: #171717, alpha: 1.0),
+  --primaryTextColor: (hex: #171717, alpha: 1.0),
 );
 
 $theme-dark: (
-  --primaryBackground: (hex: #21252b, alpha: 1.0),
+  --primaryBackgroundColor: (hex: #21252b, alpha: 1.0),
 
-  --primaryColor: (hex: #bdc1c6, alpha: 1.0),
+  --primaryTextColor: (hex: #bdc1c6, alpha: 1.0),
 );
 
 @function color-to-rgba($color, $alpha) {
