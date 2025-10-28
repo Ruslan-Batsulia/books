@@ -1,0 +1,151 @@
+.book-card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  padding: 5px;
+
+  background-color: var(--secondaryBackground);
+  border: 1px solid var(--primaryBorder);
+  border-radius: 4px;
+
+  @include tablet {
+    flex-direction: column;
+    min-width: 216px;
+    max-width: 216px;
+    padding: 10px;
+  }
+
+  @include desktop {
+    // transition: (
+    //   border-color 150ms linear,
+    //   box-shadow 150ms linear
+    // );
+
+    &:hover {
+      border: 1px solid var(--secondaryBorder);
+      box-shadow: 0 0 7.5px 0 rgba(67, 160, 71, 0.5) inset;
+    }
+  }
+
+  &__icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    position: relative;
+    width: 80px;
+    height: 120px;
+
+    border: 1px solid var(--primaryBorder);
+    border-radius: 3px;
+    overflow: hidden;
+
+    flex: 0 0 auto;
+    cursor: pointer;
+
+    @include tablet {
+      width: 196px;
+      height: 294px;
+    }
+  }
+
+  &__icon {
+    object-fit: fill;
+  }
+
+  &__info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    flex: 1 1 auto;
+
+    @include tablet {
+      gap: 15px;
+    }
+  }
+
+  &__info-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--secondaryColor);
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    height: 54px;
+
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+
+  &__info-author-list {
+    display: flex;
+    flex-direction: column;
+
+    height: 42px;
+
+    @include tablet {
+      margin-top: auto;
+    }
+  }
+
+  &__info-author {
+    display: block;
+    width: 100%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    position: relative;
+    padding-left: 10px;
+
+    font-size: 13px;
+    font-weight: 300;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primaryColor);
+    }
+
+    @include tablet {
+      font-size: 14px;
+    }
+  }
+
+  &__favorite-book-button {
+    position: absolute;
+    top: 10px;
+    left: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+
+    background-color: transparent;
+    border: none;
+  }
+
+  &__favorite-book-img {
+    width: 100%;
+    height: 100%;
+  }
+}

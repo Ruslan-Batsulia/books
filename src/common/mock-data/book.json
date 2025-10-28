@@ -1,0 +1,61 @@
+[
+  {
+    "id": "book001",
+    "title": "Two-minute Garfield stories",
+    "description": null,
+    "cover_url": null,
+    "book_contributors": [
+      {
+        "contributors": {
+          "id": "contributors001",
+          "name": "Jim Kraft",
+          "info": null
+        },
+        "contributor_roles": {
+          "id": "contributor_roles001",
+          "name": "author"
+        }
+      }
+    ],
+    "book_publishers": [
+      {
+        "locations": {
+          "id": "locations001",
+          "city": "Racine",
+          "country": "USA"
+        },
+        "publishers": {
+          "id": "publishers001",
+          "name": "Western Pub. Co."
+        },
+        "published_at": 1991
+      }
+    ],
+    "book_languages": [
+      {
+        "languages": {
+          "id": "languages001",
+          "name": "en"
+        }
+      }
+    ],
+    "book_subsubjects": [
+      {
+        "subsubjects": {
+          "id": "subsubjects001",
+          "name": "Cats"
+        }
+      }
+    ],
+    "book_tags": [
+      {
+        "tags": {
+          "id": "tags001",
+          "name": "Short stories"
+        }
+      }
+    ],
+    "created_at": "2025-08-03 15:48:53.278627+00",
+    "updated_at": "2025-08-03 22:26:21.840783+00"
+  }
+]

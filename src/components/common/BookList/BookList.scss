@@ -1,0 +1,26 @@
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @include onlyTablet {
+    align-items: center;
+  }
+
+  &__card-container {
+    display: flex;
+    justify-content: center;
+    column-gap: 50px;
+    row-gap: 30px;
+    flex-wrap: wrap;
+    align-items: stretch;
+  
+    @include tablet {
+      // justify-content: space-between;
+    }
+  
+    @include desktop {
+      justify-content: flex-start;
+    }
+  }
+}
