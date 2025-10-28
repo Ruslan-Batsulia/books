@@ -55,7 +55,7 @@ export default function BookList() {
         scroll: false,
       });
     } else {
-      const { page, ...restQuery } = query;
+      const { ...restQuery } = query;
 
       router.replace({
         pathname: pathname,
