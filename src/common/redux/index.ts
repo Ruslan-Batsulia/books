@@ -1,38 +1,35 @@
-import { configureStore } from "@reduxjs/toolkit";
-
 import {
+  configureStore,
+  combineReducers,
+} from "@reduxjs/toolkit";
+import {
+  readBooksReducer,
   readingGoalReducer,
   changeThemeReducer,
   favoriteBooksReducer,
   readingProgressReducer,
 } from "./slices";
-
 import {
-  getBooksQuery,
-  getContributorRolesQuery,
-  getContributorsQuery,
-} from "@/src/common/api";
+  booksApi,
+} from "../services";
 
-const store = configureStore({
-  reducer: {
-    readingGoal: readingGoalReducer,
-    changeTheme: changeThemeReducer,
-    readingProgress: readingProgressReducer,
-    favoriteBooks: favoriteBooksReducer,
-    
-    [getBooksQuery.reducerPath]: getBooksQuery.reducer,
-    [getContributorRolesQuery.reducerPath]: getContributorRolesQuery.reducer,
-    [getContributorsQuery.reducerPath]: getContributorsQuery.reducer,
-  },
-  middleware: (
-    getDefaultMiddleware
-  ) => getDefaultMiddleware().concat(
-    getBooksQuery.middleware,
-    getContributorRolesQuery.middleware,
-    getContributorsQuery.middleware,
-  ),
+const rootReducer = combineReducers({
+  readBooks: readBooksReducer,
+  readingGoal: readingGoalReducer,
+  changeTheme: changeThemeReducer,
+  favoriteBooks: favoriteBooksReducer,
+  readingProgress: readingProgressReducer,
+
+  [booksApi.reducerPath]: booksApi.reducer,
+});
+
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(
+      booksApi.middleware,
+    )
+  }
 });
 
 export type StoreType = ReturnType<typeof store.getState>;
-
-export { store };

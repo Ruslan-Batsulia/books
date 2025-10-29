@@ -1,0 +1,13 @@
+.book-page {
+  & .container {
+    padding: 10px var(--paddingContainer);
+
+    @include tablet {
+      padding: 20px var(--paddingContainer);
+    }
+
+    @include desktop {
+      padding: 30px var(--paddingContainer);
+    }
+  }
+}

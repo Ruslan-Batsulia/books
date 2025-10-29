@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { ChangeLanguage, ChangeTheme } from "./../Dropdown";
+import { ChangeLanguage, ChangeTheme } from "..";
+
 
 import logo from "@/public/images/logo.svg";
 
@@ -14,10 +16,10 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <div className={"footer__logo"}>
+        <Link href={"/"} className={"footer__logo"}>
           <Image src={logo} alt={"Logo"} className={"footer__logo-img"} />
           <span className={"footer__logo-title"}>{"Books Catalog"}</span>
-        </div>
+        </Link>
 
         <div className={"footer__settings"}>
           <div className={"footer__language"}>

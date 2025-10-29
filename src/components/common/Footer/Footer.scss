@@ -54,11 +54,13 @@
   }
 
   &__logo-title {
-    font-family: var(--font-winky-sans), Arial, Helvetica, sans-serif;
+    font-family: var(--font-oswald), Arial, Helvetica, sans-serif;
     font-size: 26px;
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: -1px;
+
+    color: var(--primaryColor);
   }
 
   &__settings {

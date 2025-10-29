@@ -55,11 +55,13 @@
   }
 
   &__logo-title {
-    font-family: var(--font-winky-sans), Arial, Helvetica, sans-serif;
+    font-family: var(--font-oswald), Arial, Helvetica, sans-serif;
     font-size: 26px;
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: -1px;
+
+    color: var(--primaryColor);
   }
   
   &__menu-container {
@@ -113,14 +115,6 @@
     border-radius: 5px;
 
     background-color: var(--secondaryBtnDefault);
-
-    @include desktop {
-      transition: background-color 150ms linear;
-  
-      &:hover {
-        background-color: var(--secondaryBtnHover);
-      }
-    }
 
     &:active {
       background-color: var(--secondaryBtnActive);
@@ -219,6 +213,7 @@
   }
   
   &__favorite {
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -252,7 +247,14 @@
     height: auto;
   }
 
+  &__favorite-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
   &__reading {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -285,5 +287,11 @@
   &__reading-icon {
     width: auto;
     height: 30px;
+  }
+
+  &__reading-count {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }

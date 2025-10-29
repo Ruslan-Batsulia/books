@@ -1,42 +1,34 @@
 .book-card {
   position: relative;
   display: flex;
-
+  flex-direction: row;
+  gap: 25px;
+  
   min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  padding: 5px;
 
-  @include desktop {
-    min-width: 216px;
-
-    &:hover &__wrapper {
-      // position: absolute !important;
-
-      transform: scale(1.1);
-    }
-  }
+  background-color: var(--secondaryBackground);
+  border: 1px solid var(--primaryBorder);
+  border-radius: 4px;
 
   @include tablet {
+    flex-direction: column;
     min-width: 216px;
-    width: initial;
+    max-width: 216px;
+    padding: 10px;
   }
 
-  &__wrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
-  
-    width: 100%;
-    padding: 10px;
-  
-    background-color: var(--secondaryBackground);
-    border: 1px solid var(--primaryBorder);
-    border-radius: 8px;
-    
-    transition: transform 150ms linear;
+  @include desktop {
+    transition: (
+      border-color 250ms linear,
+      box-shadow 250ms linear,
+    );
 
-    @include tablet {
-      flex-direction: column;
-
-      width: 216px;
+    &:hover {
+      border: 1px solid var(--secondaryBorder);
+      box-shadow: 0 0 7.5px 0 rgba(67, 160, 71, 0.5) inset;
     }
   }
 
@@ -50,7 +42,7 @@
     height: 120px;
 
     border: 1px solid var(--primaryBorder);
-    border-radius: 5px;
+    border-radius: 3px;
     overflow: hidden;
 
     flex: 0 0 auto;
@@ -86,7 +78,7 @@
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-line-clamp: 2;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -135,37 +127,54 @@
     }
   }
 
-  &__icon-skeleton-container,
-  &__info-author-skeleton-container,
-  &__info-title-skeleton-container {
-    min-width: 80px;
+  &__book-button {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+    padding: 4px;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+
+    &--favorite {
+      top: 15px;
+      left: 19px;
+    }
+
+    &--read {
+      bottom: 12px;
+      left: 20px;
+    }
 
     @include tablet {
-      min-width: 196px;
+      &--favorite {
+        top: 12px;
+        left: 12px;
+      }
+
+      &--read {
+        top: 12px;
+        right: 10px;
+
+        bottom: auto;
+        left: auto;
+      }
     }
   }
 
-  &__icon-skeleton {
-    height: 120px;
+  &__book-button-img {
+    width: 100%;
+    height: 100%;
 
-    @include tablet {
-      height: 294px;
-    }
-  }
-
-  &__info-title-skeleton {
-    height: 27px;
-
-    @include tablet {
-      height: 27px;
-    }
-  }
-
-  &__info-author-skeleton {
-    height: 21px;
-
-    @include tablet {
-      height: 21px;
+    &--read {
+      width: 80%;
+      height: 80%;
     }
   }
 }

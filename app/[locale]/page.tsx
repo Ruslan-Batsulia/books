@@ -2,7 +2,8 @@
 
 import { Provider } from "react-redux";
 import { store } from "@/src/common/redux";
-import { Footer, Header, HomePage } from "@/src/components";
+import { HomePage } from "@/src/components/pages";
+import { Footer, Header } from "@/src/components/common";
 import { useHasMounted } from "@/src/common/hooks/useHasMounted";
 
 export default function Home() {
@@ -17,4 +18,4 @@ export default function Home() {
       <Footer />
     </Provider>
   );
-};
+}

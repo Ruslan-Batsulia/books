@@ -2,17 +2,19 @@
 
 import Link from "next/link";
 import Search from "./Search/Search";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { StoreType } from "@/src/common/redux";
 import Image, { StaticImageData } from "next/image";
 import ReadingProgress from "./ReadingProgress/ReadingProgress";
 import { useChangeTheme } from "@/src/common/hooks/useChangeTheme";
 
 import logo from "@/public/images/logo.svg";
 import catalog from "@/public/images/catalog.svg";
-import readBooks from "@/public/images/readBooks.svg";
-import favoriteList from "@/public/images/favoriteList/favoriteList.svg";
+import readList from "@/public/images/readBook/readBookTrue.svg";
 import burgerMenuDark from "@/public/images/burger-menu/burgerMenuDark.svg";
+import favoriteList from "@/public/images/favoriteBook/favoriteBookTrue.svg";
 import burgerMenuLight from "@/public/images/burger-menu/burgerMenuLight.svg";
 import burgerMenuCloseDark from "@/public/images/burger-menu/burgerMenuCloseDark.svg";
 import burgerMenuCloseLight from "@/public/images/burger-menu/burgerMenuCloseLight.svg";
@@ -23,6 +25,8 @@ export default function Header() {
   const translate = useTranslations("Header");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { resolvedTheme } = useChangeTheme();
+  const favoriteCount = useSelector((state: StoreType) => state.favoriteBooks.favoriteBooks.length);
+  const readCount = useSelector((state: StoreType) => state.readBooks.readBooks.length);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 1439.9px)");
@@ -101,12 +105,18 @@ export default function Header() {
                 <button className={"header__favorite-btn"}>
                   <Image src={favoriteList} alt={"Favorite List"} className={"header__favorite-icon"} />
                 </button>
+                {favoriteCount ? (
+                  <span className={"header__favorite-count"}>{favoriteCount}</span>
+                ) : null}
               </div>
 
               <div className={"header__reading"}>
                 <button className={"header__reading-btn"}>
-                  <Image src={readBooks} alt={"Reading List"} className={"header__reading-icon"} />
+                  <Image src={readList} alt={"Reading List"} className={"header__reading-icon"} />
                 </button>
+                {readCount ? (
+                  <span className={"header__reading-count"}>{readCount}</span>
+                ) : null}
               </div>
             </div>
           </div>

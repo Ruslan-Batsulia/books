@@ -18,11 +18,11 @@ const nextConfig: NextConfig = {
     ],
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, "sass")],
-    prependData: `
-      @use "_variables" as *;
-      @use "_mixins" as *;
-      @use "_colors" as *;
+    loadPaths: [path.join(__dirname, "sass")],
+    additionalData: `
+      @use "variables" as *;
+      @use "mixins" as *;
+      @use "colors" as *;
     `,
     silenceDeprecations: ["legacy-js-api"],
   },
