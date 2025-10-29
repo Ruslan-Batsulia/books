@@ -14,10 +14,12 @@ import favoriteBookFalse from "@/public/images/favoriteBook/favoriteBookFalse.sv
 import readBookTrue from "@/public/images/readBook/readBookTrue.svg";
 import readBookFalse from "@/public/images/readBook/readBookFalse.svg";
 
+import IconNone from "@/public/images/avatar_book.png";
+
 import "./BookCard.scss";
 
 type BookCardProps = {
-  icon: StaticImageData | string;
+  icon?: StaticImageData | string | undefined;
   title: string;
   author: string[];
   bookId: string;
@@ -48,7 +50,7 @@ export default function BookCard({
     <div className={"book-card"}>
       <Link href={"/book/" + (bookId)} className={"book-card__icon-container"}>
         <Image
-          src={icon}
+          src={typeof icon !== "undefined" ? icon : IconNone}
           alt={"Icon Book"}
           className={"book-card__icon"}
           fill={true}
