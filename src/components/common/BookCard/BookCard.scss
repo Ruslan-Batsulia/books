@@ -21,10 +21,10 @@
   }
 
   @include desktop {
-    // transition: (
-    //   border-color 150ms linear,
-    //   box-shadow 150ms linear
-    // );
+    transition: (
+      border-color 250ms linear,
+      box-shadow 250ms linear,
+    );
 
     &:hover {
       border: 1px solid var(--secondaryBorder);
@@ -127,25 +127,54 @@
     }
   }
 
-  &__favorite-book-button {
+  &__book-button {
     position: absolute;
-    top: 10px;
-    left: 13px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     padding: 4px;
 
     background-color: transparent;
     border: none;
+    border-radius: 50%;
+
+    &--favorite {
+      top: 15px;
+      left: 19px;
+    }
+
+    &--read {
+      bottom: 12px;
+      left: 20px;
+    }
+
+    @include tablet {
+      &--favorite {
+        top: 12px;
+        left: 12px;
+      }
+
+      &--read {
+        top: 12px;
+        right: 10px;
+
+        bottom: auto;
+        left: auto;
+      }
+    }
   }
 
-  &__favorite-book-img {
+  &__book-button-img {
     width: 100%;
     height: 100%;
+
+    &--read {
+      width: 80%;
+      height: 80%;
+    }
   }
 }

@@ -1,9 +1,18 @@
-import { useState } from "react";
+import {
+  addReadBook,
+  removeReadBook,
+  addFavoriteBook,
+  removeFavoriteBook,
+} from "@/src/common/redux/slices";
 import { Link } from "@/i18n/navigation";
+import { StoreType } from "@/src/common/redux";
 import Image, { StaticImageData } from "next/image";
+import { useDispatch, useSelector } from "react-redux";
 
 import favoriteBookTrue from "@/public/images/favoriteBook/favoriteBookTrue.svg";
 import favoriteBookFalse from "@/public/images/favoriteBook/favoriteBookFalse.svg";
+import readBookTrue from "@/public/images/readBook/readBookTrue.svg";
+import readBookFalse from "@/public/images/readBook/readBookFalse.svg";
 
 import "./BookCard.scss";
 
@@ -20,7 +29,20 @@ export default function BookCard({
   author,
   bookId,
 }: BookCardProps) {
-  const [isFavoriteBook, setIsFavoriteBook] = useState<boolean>(false);
+  const dispatch = useDispatch();
+
+  const isFavoriteBook = useSelector(
+    (state: StoreType) => state.favoriteBooks.favoriteBooks.includes(bookId)
+  );
+  const isReadBook = useSelector(
+    (state: StoreType) => state.readBooks.readBooks.includes(bookId)
+  );
+
+  const toggleFavoriteBook = () =>
+    dispatch(isFavoriteBook ? removeFavoriteBook(bookId) : addFavoriteBook(bookId));
+
+  const toggleReadBook = () =>
+    dispatch(isReadBook ? removeReadBook(bookId) : addReadBook(bookId));
 
   return (
     <div className={"book-card"}>
@@ -52,14 +74,26 @@ export default function BookCard({
       </div>
 
       <button
-        className={"book-card__favorite-book-button"}
-        onClick={() => { setIsFavoriteBook((prev) => !prev) }}
+        className={"book-card__book-button book-card__book-button--favorite"}
+        onClick={toggleFavoriteBook}
       >
         <Image
           src={isFavoriteBook ? favoriteBookTrue : favoriteBookFalse}
           alt={"Favorite book button"}
           loading={"eager"}
-          className={"book-card__favorite-book-img"}
+          className={"book-card__book-button-img book-card__book-button-img--favorite"}
+        />
+      </button>
+
+      <button
+        className={"book-card__book-button book-card__book-button--read"}
+        onClick={toggleReadBook}
+      >
+        <Image
+          src={isReadBook ? readBookTrue : readBookFalse}
+          alt={"Read book button"}
+          loading={"eager"}
+          className={"book-card__book-button-img book-card__book-button-img--read"}
         />
       </button>
     </div>

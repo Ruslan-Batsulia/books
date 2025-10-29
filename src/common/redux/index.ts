@@ -3,6 +3,7 @@ import {
   combineReducers,
 } from "@reduxjs/toolkit";
 import {
+  readBooksReducer,
   readingGoalReducer,
   changeThemeReducer,
   favoriteBooksReducer,
@@ -13,6 +14,7 @@ import {
 } from "../services";
 
 const rootReducer = combineReducers({
+  readBooks: readBooksReducer,
   readingGoal: readingGoalReducer,
   changeTheme: changeThemeReducer,
   favoriteBooks: favoriteBooksReducer,

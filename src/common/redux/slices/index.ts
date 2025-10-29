@@ -23,3 +23,10 @@ export {
   setFavoriteBooks,
   removeFavoriteBook,
 } from "./favoriteBooksSlice";
+
+export {
+  default as readBooksReducer,
+  addReadBook,
+  setReadBooks,
+  removeReadBook,
+} from "./readBooksSlice";

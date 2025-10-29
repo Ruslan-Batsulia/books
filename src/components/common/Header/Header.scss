@@ -213,6 +213,7 @@
   }
   
   &__favorite {
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -246,7 +247,14 @@
     height: auto;
   }
 
+  &__favorite-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
   &__reading {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -279,5 +287,11 @@
   &__reading-icon {
     width: auto;
     height: 30px;
+  }
+
+  &__reading-count {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
