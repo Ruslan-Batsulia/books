@@ -97,3 +97,9 @@ img {
     color-scheme: dark;
   }
 }
+
+@keyframes shine {
+  to {
+    background-position: 150% 0;
+  }
+}

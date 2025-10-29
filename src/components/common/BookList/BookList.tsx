@@ -7,8 +7,6 @@ import { BooksListSkeleton, Pagination } from "..";
 import { useGetBooksQuery } from "@/src/common/services";
 import { usePathname, useRouter } from "@/i18n/navigation";
 
-import IconNone from "@/public/images/avatar_book.png";
-
 import "./BookList.scss";
 
 export default function BookList() {
@@ -40,7 +38,7 @@ export default function BookList() {
     author: book.book_contributors?.filter(
       (item) => item.contributor_roles.name === "author"
     ).map((item) => item.contributors.name) ?? [],
-    icon: book.cover_url ?? IconNone,
+    icon: book.cover_url ?? undefined,
   });
 
   const handlePageChange = (page: number) => {
