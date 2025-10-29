@@ -1,9 +1,9 @@
-import { Pagination } from "..";
 import { useLocale } from "next-intl";
 import { Book } from "@/src/common/types";
 import { useMemo, useState } from "react";
 import BookCard from "../BookCard/BookCard";
 import { useSearchParams } from "next/navigation";
+import { BooksListSkeleton, Pagination } from "..";
 import { useGetBooksQuery } from "@/src/common/services";
 import { usePathname, useRouter } from "@/i18n/navigation";
 
@@ -78,7 +78,7 @@ export default function BookList() {
       />
       {(isLoading || isFetching) ? (
         <div className={"book-list__card-container"}>
-          {"Waiting"}
+          <BooksListSkeleton skeletonCount={10} />
         </div>
       ) : (
         <div className={"book-list__card-container"}>
