@@ -2,6 +2,6 @@
   "Header": {
     "button": "Catalog",
     "placeholder": "Search books...",
-    "readingGoal": " books read out of "
+    "readingGoal": "{count, plural, one { book read of } other { books read of }}"
   }
 }

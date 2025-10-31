@@ -2,6 +2,6 @@
   "Header": {
     "button": "Каталог",
     "placeholder": "Пошук книг...",
-    "readingGoal": " книг прочитано з "
+    "readingGoal": "{count, plural, =0 { книг прочитано з } one { книга прочитана з } few { книги прочитано з } other { книг прочитано з }}"
   }
 }
