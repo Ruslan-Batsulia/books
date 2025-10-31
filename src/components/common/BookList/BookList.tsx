@@ -28,9 +28,10 @@ export default function BookList() {
 
   const { data, isLoading, isFetching } = useGetBooksQuery(queryParams);
   
+  const limit = queryParams.limit;
   const booksResults: Book[] = data?.data || [];
-  const booksCount: number = data?.count || 10;
-  const totalPages = Math.ceil(booksCount / 10);
+  const booksCount: number = data?.count || 1;
+  const totalPages = Math.ceil(booksCount / limit);
 
   const bookResult = (book: Book) => ({
     id: book.id,
@@ -53,7 +54,8 @@ export default function BookList() {
         scroll: false,
       });
     } else {
-      const { ...restQuery } = query;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { page, ...restQuery } = query;
 
       router.replace({
         pathname: pathname,
@@ -76,13 +78,13 @@ export default function BookList() {
       />
       {(isLoading || isFetching) ? (
         <div className={"book-list__card-container"}>
-          <BooksListSkeleton skeletonCount={10} />
+          <BooksListSkeleton skeletonCount={limit} />
         </div>
       ) : (
         <div className={"book-list__card-container"}>
           {booksResults.map((item) => {
             const book = bookResult(item);
-
+            
             return (
               <BookCard
                 key={book.id}

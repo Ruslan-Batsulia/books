@@ -4,8 +4,8 @@ const readingGoalSlice = createSlice({
   name: "readingGoal",
   initialState: {
     readingGoal: (typeof window !== "undefined")
-      ? (Number(localStorage.getItem("savedReadingGoal")) || 10) as number
-      : 10 as number
+      ? (Number(localStorage.getItem("savedReadingGoal")) || 0) as number
+      : 0 as number
   },
   reducers: {
     incrementReadingGoal: (state) => {
