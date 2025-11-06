@@ -17,7 +17,7 @@ export default function Book() {
   return (
     <Provider store={store}>
       <Header />
-      <BookPage id={id} />
+      <BookPage idBook={id} />
       <Footer />
     </Provider>
   );

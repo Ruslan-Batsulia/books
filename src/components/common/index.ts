@@ -5,4 +5,4 @@ export { default as BookList } from "./BookList/BookList";
 export { default as Pagination } from "./Pagination/Pagination";
 export { default as ChangeTheme } from "./Dropdown/ChangeTheme/ChangeTheme";
 export { default as ChangeLanguage } from "./Dropdown/ChangeLanguage/ChangeLanguage";
-export { default as BooksListSkeleton } from "./BooksListSkeleton/BooksListSkeleton";
+export { default as BookCardSkeleton } from "./BookCardSkeleton/BookCardSkeleton";

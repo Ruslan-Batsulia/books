@@ -1,7 +1,4 @@
-import { BookCard, BookList } from "../../common";
-
-import IconNone from "@/public/images/avatar_book.png";
-
+import { BookList } from "../../common";
 import "./HomePage.scss";
 
 export default function HomePage() {

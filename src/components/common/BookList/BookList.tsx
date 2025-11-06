@@ -1,11 +1,10 @@
 import { useLocale } from "next-intl";
-import { Book } from "@/src/common/types";
 import { useMemo, useState } from "react";
-import BookCard from "../BookCard/BookCard";
+import type { Book } from "@/src/common/types";
 import { useSearchParams } from "next/navigation";
-import { BooksListSkeleton, Pagination } from "..";
 import { useGetBooksQuery } from "@/src/common/services";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { BookCardSkeleton, Pagination, BookCard } from "..";
 
 import "./BookList.scss";
 
@@ -78,7 +77,7 @@ export default function BookList() {
       />
       {(isLoading || isFetching) ? (
         <div className={"book-list__card-container"}>
-          <BooksListSkeleton skeletonCount={limit} />
+          <BookCardSkeleton skeletonCount={limit} />
         </div>
       ) : (
         <div className={"book-list__card-container"}>

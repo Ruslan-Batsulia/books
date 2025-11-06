@@ -101,23 +101,19 @@ export default function Header() {
             <div className={"header__interactive"}>
               <ReadingProgress />
 
-              <div className={"header__favorite"}>
-                <button className={"header__favorite-btn"}>
-                  <Image src={favoriteList} alt={"Favorite List"} className={"header__favorite-icon"} />
-                </button>
+              <button className={"header__favorite-btn"}>
+                <Image src={favoriteList} alt={"Favorite List"} className={"header__favorite-icon"} />
                 {favoriteCount ? (
                   <span className={"header__favorite-count"}>{favoriteCount}</span>
                 ) : null}
-              </div>
+              </button>
 
-              <div className={"header__reading"}>
-                <button className={"header__reading-btn"}>
-                  <Image src={readList} alt={"Reading List"} className={"header__reading-icon"} />
-                </button>
+              <button className={"header__reading-btn"}>
+                <Image src={readList} alt={"Reading List"} className={"header__reading-icon"} />
                 {readCount ? (
                   <span className={"header__reading-count"}>{readCount}</span>
                 ) : null}
-              </div>
+              </button>
             </div>
           </div>
         </div>

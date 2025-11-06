@@ -10,12 +10,11 @@ import { StoreType } from "@/src/common/redux";
 import Image, { StaticImageData } from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
+import IconNone from "@/public/images/avatar_book.png";
 import favoriteBookTrue from "@/public/images/favoriteBook/favoriteBookTrue.svg";
 import favoriteBookFalse from "@/public/images/favoriteBook/favoriteBookFalse.svg";
 import readBookTrue from "@/public/images/readBook/readBookTrue.svg";
 import readBookFalse from "@/public/images/readBook/readBookFalse.svg";
-
-import IconNone from "@/public/images/avatar_book.png";
 
 import "./BookCard.scss";
 
@@ -66,7 +65,7 @@ export default function BookCard({
       {(isMobile) ? (
         <div className={"book-card__icon-container"}>
           <Image
-            src={typeof icon !== "undefined" ? icon : IconNone}
+            src={icon ? icon : IconNone}
             alt={"Icon Book"}
             className={"book-card__icon"}
             fill={true}
@@ -77,7 +76,7 @@ export default function BookCard({
       ) : (
         <Link href={"/book/" + (bookId)} className={"book-card__icon-container"}>
           <Image
-            src={typeof icon !== "undefined" ? icon : IconNone}
+            src={icon ? icon : IconNone}
             alt={"Icon Book"}
             className={"book-card__icon"}
             fill={true}
